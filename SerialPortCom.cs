@@ -165,12 +165,24 @@ namespace SDP_2S_Test
                         switch (txData[0])
                         {
                             case 0xA0:
+                                if (!serialPort[2].IsOpen)
+                                {
+                                    serialPort[2].Open();
+                                }
                                 serialPort[2].Write(txData, 0, txData[2]);
                                 break;
                             case 0xA8:
+                                if (!serialPort[0].IsOpen)
+                                {
+                                    serialPort[0].Open();
+                                }
                                 serialPort[0].Write(txData, 0, txData[2]);
                                 break;
                             case 0xA1:
+                                if (!serialPort[1].IsOpen)
+                                {
+                                    serialPort[1].Open();
+                                }
                                 serialPort[1].Write(txData, 0, txData[1]);
                                 break;
                         }
