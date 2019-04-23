@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Timers;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace SDP_2S_Test
@@ -360,6 +361,85 @@ namespace SDP_2S_Test
         {
             serialPortNames = serialPortCom.getSerialPortNames();
             j3ComboBox.ItemsSource = serialPortNames;
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (Keyboard.IsKeyDown(Key.Q))
+            {
+                if (j7HeartButton.IsEnabled) {
+                    byte[] data = sY_760.SYCNTo760Heart(0);
+                    serialPortCom.addTxDataToBuffer(data);
+                    j7TxTextBlock.Text = sY_CN.ToHexString(data);
+                    j7RxTextBlock.Text = "";
+
+                    j7HeartButton.IsEnabled = false;
+
+                    j7HeartButton_ClickTimer = new Timer(8000);
+                    j7HeartButton_ClickTimer.Elapsed += J7HeartButton_ClickTimer_Elapsed;//到达时间的时候执行事件；
+                    j7HeartButton_ClickTimer.AutoReset = false;//设置是执行一次（false）还是一直执行(true)；
+                    j7HeartButton_ClickTimer.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件；
+                }
+                
+            }
+            else if (Keyboard.IsKeyDown(Key.W)) {
+                if (j1AccreditFilmsButton.IsEnabled) {
+                    byte[] data = sY_CN.txGetRandomData();
+                    serialPortCom.addTxDataToBuffer(data);
+                    j1TxAccreditTextBlock.Text = sY_CN.ToHexString(data);
+                    j1RxAccreditTextBlock.Text = "";
+                    j1AccreditFilmsButton.IsEnabled = false;
+
+                    j1AccreditFilmsButton_ClickTimer = new Timer(1000);
+                    j1AccreditFilmsButton_ClickTimer.Elapsed += J1AccreditFilmsButton_ClickTimer_Elapsed;//到达时间的时候执行事件；
+                    j1AccreditFilmsButton_ClickTimer.AutoReset = false;//设置是执行一次（false）还是一直执行(true)；
+                    j1AccreditFilmsButton_ClickTimer.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件；
+                }
+                
+            }
+            else if (Keyboard.IsKeyDown(Key.E))
+            {
+                if (j1InquireFilmsButton.IsEnabled) {
+                    byte[] data = sY_CN.txGetFilmsAmount();
+                    serialPortCom.addTxDataToBuffer(data);
+                    j1TxInquireTextBlock.Text = sY_CN.ToHexString(data);
+                    j1RxInquireTextBlock.Text = "";
+                }
+               
+            }
+            else if (Keyboard.IsKeyDown(Key.R))
+            {
+                if (j1clearFilmsButton.IsEnabled) {
+                    byte[] data = sY_CN.txClearFilms();
+                    serialPortCom.addTxDataToBuffer(data);
+                    j1TxClearTextBlock.Text = sY_CN.ToHexString(data);
+                    j1RxClearTextBlock.Text = "";
+                    j1clearFilmsButton.IsEnabled = false;
+
+                    j1InquireFilmsButton_ClickTimer = new Timer(1000);
+                    j1InquireFilmsButton_ClickTimer.Elapsed += J1InquireFilmsButton_ClickTimer_Elapsed; ;//到达时间的时候执行事件；
+                    j1InquireFilmsButton_ClickTimer.AutoReset = false;//设置是执行一次（false）还是一直执行(true)；
+                    j1InquireFilmsButton_ClickTimer.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件；
+                }
+               
+            }
+            else if (Keyboard.IsKeyDown(Key.T))
+            {
+                if (j3MinusButton.IsEnabled) {
+                    byte[] data = sY_760.SY760ToCNPrint();
+                    J3MinusRandomData = data[3];
+                    serialPortCom.addTxDataToBuffer(data);
+                    j3TxMinusTextBlock.Text = sY_CN.ToHexString(data);
+                    j3RxMinusTextBlock.Text = "";
+                    j3MinusButton.IsEnabled = false;
+
+                    j3MinusButton_ClickTimer = new Timer(1000);
+                    j3MinusButton_ClickTimer.Elapsed += J3MinusButton_ClickTimer_Elapsed; ; ;//到达时间的时候执行事件；
+                    j3MinusButton_ClickTimer.AutoReset = false;//设置是执行一次（false）还是一直执行(true)；
+                    j3MinusButton_ClickTimer.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件；
+                }
+                
+            }
         }
 
         private void J1InquireFilmsButton_ClickTimer_Elapsed(object sender, ElapsedEventArgs e)

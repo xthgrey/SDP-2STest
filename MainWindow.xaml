@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="SDP-2S 测试工具" Height="370" Width="1020" Closing="Window_Closing">
+        Title="SDP-2S 测试工具" Height="370" Width="1020" Closing="Window_Closing" KeyDown="Window_KeyDown">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"></RowDefinition>
@@ -35,8 +35,8 @@
         <Border Grid.Row="3" Grid.Column="1" BorderThickness="1" BorderBrush="Black"></Border>
         <Border Grid.Row="3" Grid.Column="2" BorderThickness="1" BorderBrush="Black"></Border>
         <Border Grid.Row="3" Grid.Column="3" BorderThickness="1" BorderBrush="Black"></Border>
-        
-        
+
+
         <TextBlock Grid.Row="0" Grid.Column="0" Text="PCB板"  TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         <TextBlock Grid.Row="0" Grid.Column="1" Text="接口和端口号、通讯状态" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         <TextBlock Grid.Row="0" Grid.Column="2" Text="功能" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
@@ -46,7 +46,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"></RowDefinition>
                 <RowDefinition Height="30"></RowDefinition>
-                
+
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100"></ColumnDefinition>
@@ -76,11 +76,11 @@
                 <ColumnDefinition Width="100"></ColumnDefinition>
                 <ColumnDefinition Width="100"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            
+
             <Border Grid.Row="0" Grid.Column="0" BorderThickness="1" BorderBrush="Black"></Border>
             <Border Grid.Row="0" Grid.Column="1" BorderThickness="1" BorderBrush="Black"></Border>
 
-            <Button x:Name="j7HeartButton" Grid.Row="0" Grid.Column="0" Content="发送心跳包" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" Click="J7HeartButton_Click"></Button>
+            <Button x:Name="j7HeartButton" Grid.Row="0" Grid.Column="0" Content="发送心跳包(Q)" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" Click="J7HeartButton_Click"/>
             <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="8S内继电器是否有响声?" TextWrapping="Wrap"></TextBlock>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="3">
@@ -113,12 +113,13 @@
                 <RowDefinition Height="60"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300"></ColumnDefinition>
+                <ColumnDefinition Width="248.134"></ColumnDefinition>
+                <ColumnDefinition Width="51.866"/>
             </Grid.ColumnDefinitions>
-            
-            <Border Grid.Row="0" Grid.Column="0" BorderThickness="1" BorderBrush="Black" Background="LightGray"></Border>
 
-            <Grid Grid.Row="1" Grid.Column="0" Background="LightGray">
+            <Border Grid.Row="0" Grid.Column="0" BorderThickness="1" BorderBrush="Black" Background="LightGray" Grid.ColumnSpan="2"></Border>
+
+            <Grid Grid.Row="1" Grid.Column="0" Background="LightGray" Grid.ColumnSpan="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"></RowDefinition>
                     <RowDefinition Height="30"></RowDefinition>
@@ -144,9 +145,9 @@
                 <Button x:Name="j1SerialPortButton" Grid.Row="1" Grid.Column="2" Content="打开串口" HorizontalAlignment="Center" VerticalAlignment="Center" Click="J1SerialPortButton_Click"></Button>
             </Grid>
 
-            <Border Grid.Row="2" Grid.Column="0" BorderThickness="1" BorderBrush="Black" Background="LightGray"></Border>
-            
-            <Grid Grid.Row="3" Grid.Column="0">
+            <Border Grid.Row="2" Grid.Column="0" BorderThickness="1" BorderBrush="Black" Background="LightGray" Grid.ColumnSpan="2"></Border>
+
+            <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"></RowDefinition>
                     <RowDefinition Height="30"></RowDefinition>
@@ -199,9 +200,9 @@
                 <Border Grid.Row="2" Grid.Column="0" BorderThickness="1" BorderBrush="Black"></Border>
                 <Border Grid.Row="2" Grid.Column="1" BorderThickness="1" BorderBrush="Black" Background="Gray"></Border>
 
-                <Button x:Name="j1AccreditFilmsButton" Grid.Row="0" Grid.Column="0" Content="授权片量" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" Click="J1AccreditFilmsButton_Click"></Button>
-                <Button x:Name="j1InquireFilmsButton" Grid.Row="1" Grid.Column="0" Content="查询片量" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" Click="J1InquireFilmsButton_Click"></Button>
-                <Button x:Name="j1clearFilmsButton" Grid.Row="2" Grid.Column="0" Content="清零片量" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" Click="J1clearFilmsButton_Click"></Button>
+                <Button x:Name="j1AccreditFilmsButton" Grid.Row="0" Grid.Column="0" Content="授权片量(W)" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" Click="J1AccreditFilmsButton_Click"></Button>
+                <Button x:Name="j1InquireFilmsButton" Grid.Row="1" Grid.Column="0" Content="查询片量(E)" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" Click="J1InquireFilmsButton_Click"></Button>
+                <Button x:Name="j1clearFilmsButton" Grid.Row="2" Grid.Column="0" Content="清零片量(R)" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" Click="J1clearFilmsButton_Click"></Button>
                 <TextBlock x:Name="j1AccreditFilmsTextBlock" Grid.Row="0" Grid.Column="1" Text="1" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                 <TextBlock x:Name="j1InquireTextBlock" Grid.Row="1" Grid.Column="1" Text="" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                 <TextBlock x:Name="J1ClearTextBlock" Grid.Row="2" Grid.Column="1" Text="" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"></TextBlock>
@@ -218,7 +219,7 @@
                 <Border Grid.Row="0" Grid.Column="0" BorderThickness="1" BorderBrush="Black"></Border>
                 <Border Grid.Row="0" Grid.Column="1" BorderThickness="1" BorderBrush="Black"></Border>
 
-                <Button x:Name="j3MinusButton" Grid.Row="0" Grid.Column="0" Content="片量减1" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" Click="J3MinusButton_Click"></Button>
+                <Button x:Name="j3MinusButton" Grid.Row="0" Grid.Column="0" Content="片量减1(T)" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" Click="J3MinusButton_Click"></Button>
                 <TextBlock x:Name="j3MinusTextBlock" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             </Grid>
         </Grid>
@@ -293,7 +294,7 @@
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="接收" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                 <TextBlock x:Name="j3RxMinusTextBlock" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0"></TextBlock>
             </Grid>
-               
+
         </Grid>
     </Grid>
 </Window>
